@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KFC Landing Page | Responsive Design</title>
+  <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+  <section class="main">
+    <header>
+      <a href="#"><img src="../images/logo.png" class="logo"></a>
+      <div class="toggle"></div>
+      <ul class="navigation">
+        <li><a href="#">Home</a></li>
+        <li><a href="../menu.html">Menu</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </header>
+    <div class="content">
+      <div class="text">
+        <h2>Its Finger<br>Lickin <span>Good.</span></h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, adipisci obcaecati! Accusamus fugiat obcaecati nesciunt maiores rerum placeat amet voluptatibus cumque soluta similique saepe, assumenda eos dolorum autem. Iusto enim accusamus optio cupiditate earum ipsam!</p>
+        <a href="menu.html" class="btn">Order Now</a>
+      </div>
+      <div class="slider">
+        <div class="slides active">
+          <img src="../images/burger_fries.png">
+        </div>
+        <div class="slides">
+          <img src="../images/french_fries.png">
+        </div>
+        <div class="slides">
+          <img src="../images/burger.png">
+        </div>
+        <div class="slides">
+          <img src="../images/fried_chicken.png">
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <ul class="sci">
+        <li><a href="https://www.facebook.com/profile.php?id=100015732731302&mibextid=ZbWKwL"><ion-icon name="logo-facebook"></ion-icon></a></li>
+        <li><a href="https://x.com/aman1210514"><ion-icon name="logo-twitter"></ion-icon></a></li>
+        <li><a href="https://www.instagram.com/prince__y_a_d_a_v?igsh=cGR1dXVlM3llaXVn"><ion-icon name="logo-instagram"></ion-icon></a></li>
+      </ul>
+      <div class="prevNext">
+        <p>Always Fresh</p>
+        <span class="prev"><ion-icon name="chevron-back-outline"></ion-icon></span>
+        <span class="next"><ion-icon name="chevron-forward-outline"></ion-icon></span>
+      </div>
+    </div>
+  </section>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    // Toggle menu
+    const menutoggle = document.querySelector('.toggle');
+    const navigation = document.querySelector('.navigation');
+    menutoggle.onclick = function() {
+      menutoggle.classList.toggle('active');
+      navigation.classList.toggle('active');
+    };
+
+    // Select slider elements
+const slides = document.querySelectorAll('.slides');
+const slider = document.querySelector('.slider');
+
+// Initialize slide index
+let i = 0;
+
+// Function to activate a slide
+function ActiveSlide(n) {
+  slides.forEach(slide => slide.classList.remove('active'));
+  slides[n].classList.add('active');
+}
+
+// Automatic slide transition
+function autoSlide() {
+  i = (i + 1) % slides.length; // Loop back to first slide after the last one
+  ActiveSlide(i);
+}
+
+// Set interval for automatic sliding (every 3 seconds)
+let slideInterval = setInterval(autoSlide, 3000);
+
+// Pause slider on mouse hover
+slider.addEventListener('mouseover', () => clearInterval(slideInterval));
+
+// Resume slider on mouse out
+slider.addEventListener('mouseout', () => {
+  slideInterval = setInterval(autoSlide, 3000); // Restart interval
+});
+
+// Allow manual navigation with buttons
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+
+prev.addEventListener('click', () => {
+  i = (i === 0) ? slides.length - 1 : i - 1; // Go to the last slide if at the first slide
+  ActiveSlide(i);
+  clearInterval(slideInterval); // Reset auto-slide timer on manual interaction
+  slideInterval = setInterval(autoSlide, 3000);
+});
+
+next.addEventListener('click', () => {
+  i = (i + 1) % slides.length; // Loop to the first slide after the last one
+  ActiveSlide(i);
+  clearInterval(slideInterval); // Reset auto-slide timer on manual interaction
+  slideInterval = setInterval(autoSlide, 3000);
+});
+
+  </script>
+</body>
+</html>

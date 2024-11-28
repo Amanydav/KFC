@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KFC Menu</title>
+  <link rel="stylesheet" href="../style/menu.css">
+</head>
+<body>
+
+    <header>
+      <div class="header-container">
+        <img src="../images/logo.png" alt="KFC Logo" class="logo">
+        <nav>
+          <ul class="navigation">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="../menu.html">Menu</a></li>
+              <li><a href="../about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+
+    <div class="categories">
+      
+      <button onclick="filterMenu('all')">All</button>
+      <button onclick="filterMenu('chicken')">Chicken</button>
+      <button onclick="filterMenu('burgers')">Burgers</button>
+      <button onclick="filterMenu('beverages')">Beverages</button>
+      <button id="cart-button" onclick="toggleCartModal()">Cart (<span id="cart-count">0</span>)</button>
+    </div>
+
+    <div class="menu" id="menu"></div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+      <div class="cart-content">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <div id="total-amount">Total: $0.00</div> 
+        <button onclick="placeOrder()" class="order-now">Order Now</button>
+        <button onclick="toggleCartModal()" class="close-cart">Close</button>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-container">
+      <p>&copy; 2024 KFC. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="../script/menu.js"></script>
+</body>
+</html>
